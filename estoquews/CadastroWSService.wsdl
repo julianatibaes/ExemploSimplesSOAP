@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:tns="http://up.edu.br/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+name="CadastroWSService" 
+targetNamespace="http://up.edu.br/">
+
+  <wsdl:types>
+    <xsd:schema>
+      	<xsd:import namespace="http://up.edu.br/" 
+      				schemaLocation="http://localhost:8080/estoquews?xsdl=1" />
+    </xsd:schema>
+  </wsdl:types>
+  
+  <wsdl:message name="listar">
+    <wsdl:part element="tns:listar" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:message name="listarResponse"">
+    <wsdl:part element="tns:listarResponse" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:portType name="EstoqueWS">
+    <wsdl:operation name="listar">
+      <wsdl:input wsam:Action="http://up.edu.br/EstoqueWS/listarRequest" 
+      message="tns:listar"/>
+      <wsdl:output wsam:Action="http://up.edu.br/EstoqueWS/listarResponse"
+      message="tns:listar"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="CadastroWSPortBinding" type="tns:EstoqueWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="listar">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="CadastroWSService">
+    <wsdl:port binding="tns:CadastroWSPortBinding" name="CadastroWSPort">
+      <soap:address location="http://localhost:8080/estoquews"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

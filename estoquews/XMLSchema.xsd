@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+targetNamespace="http://up.edu.br/" 
+xmlns:tns="http://up.edu.br/" 
+version="1.0">
+
+
+	<xs:element name="listar" type="tns:listar" /> 
+	<xs:element name="listarResponse" type="tns:listarResponse" /> 
+	<xs:element name="produto" type="tns:produto" />
+	
+	<xs:complexType name="listar"> 
+		<xs:sequence /> 
+	</xs:complexType> 
+	
+	<xs:complexType name="listarResponse"> 
+		<xs:sequence> 
+			<xs:element name="return" type="tns:produto" minOccurs="0" maxOccurs="unbounded" /> 
+		</xs:sequence> 
+	</xs:complexType> 
+	
+	<xs:complexType name="produto"> 
+		<xs:sequence> 
+			<xs:element name="id" type="xs:long" minOccurs="0" /> 
+			<xs:element name="nome" type="xs:string" minOccurs="0" /> 
+			<xs:element name="valor" type="xs:double" minOccurs="0" /> 
+		</xs:sequence> 
+	</xs:complexType>
+<xs:schema>
